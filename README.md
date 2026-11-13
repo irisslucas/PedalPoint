@@ -12,10 +12,10 @@ The concept is inspired by the University of Aveiro's UAUbike programme.
 
 | Name | Role |
 | --- | --- |
-| _(to fill)_ | Team Coordinator |
-| _(to fill)_ | Product Owner |
-| _(to fill)_ | QA Engineer |
-| _(to fill)_ | DevOps Master |
+| Íris Lucas | Team Coordinator |
+| Francisco Baptista | Product Owner |
+| Guilherme Gomes | QA Engineer |
+| Bohdan Popov | DevOps Master |
 
 All members are also developers.
 
