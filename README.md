@@ -23,7 +23,7 @@ All members are also developers.
 
 ## 3. Project bookmarks
 
-- Jira backlog: _(to add)_
+- Jira backlog:(https://pedalpoint.atlassian.net/jira/software/projects/PDP/boards/1/backlog)
 - API documentation: _(to add)_
 - Static analysis dashboard (SonarQube): _(to add)_
 - Observability dashboard: _(to add)_
