@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: pedalpoint-backend
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/pedalpoint}
+    username: ${SPRING_DATASOURCE_USERNAME:pp}
+    password: ${SPRING_DATASOURCE_PASSWORD:pp}
+  jpa:
+    hibernate:
+      ddl-auto: validate   # schema is owned by Flyway
+    open-in-view: false
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
