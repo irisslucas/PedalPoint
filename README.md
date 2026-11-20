@@ -1,5 +1,7 @@
 # PedalPoint
 
+![CI](https://github.com/irisslucas/PedalPoint/actions/workflows/ci.yml/badge.svg)
+
 ## 1. Project abstract
 
 **PedalPoint** is a light-mobility fleet-as-a-service platform for a university campus.
@@ -35,4 +37,12 @@ frontend/    Web UI
 simulator/   Fleet telemetry simulator
 docs/        Reports (PDF) and presentation
 .github/     CI workflows and pull request template
+AGENTS.md    Instructions for AI agents (build commands, style, definition of done)
+```
+
+## Running locally
+
+```
+docker compose up --build     # backend on :8080, PostgreSQL on :5432
+cd backend && ./mvnw verify   # unit + integration tests (needs Docker)
 ```
