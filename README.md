@@ -4,7 +4,7 @@
 
 ## 1. Project abstract
 
-**PedalPoint** is a light-mobility fleet-as-a-service platform for a university campus.
+**PedalPoint** is an e-bike sharing service for a university campus, run as fleet-as-a-service.
 
 PedalPoint Mobility Ltd. runs a fleet of e-bikes and cargo e-bikes for Ria Nova University (both fictional). Students and staff with a @ua.pt account find an e-bike at a campus hub, book it for a period or unlock it on the spot, and return it to any hub with free space, where it charges. They pay with a monthly or semester pass, or per use. The operator handles maintenance, batteries and moving e-bikes between hubs under agreed SLAs. The university sets the rules of use and the prices, and follows the service through KPIs and a monthly statement.
 
@@ -42,5 +42,9 @@ AGENTS.md    Instructions for AI agents (build commands, style, definition of do
 
 ```
 docker compose up --build     # backend on :8080, PostgreSQL on :5432
-cd backend && ./mvnw verify   # unit + integration tests (needs Docker)
+cd backend && ./mvnw verify   # unit + integration tests + Cucumber scenarios (needs Docker)
 ```
+
+Try it: `curl "localhost:8080/api/hubs"` and `curl "localhost:8080/api/hubs/1/bikes?type=E_BIKE"`.
+
+The Gherkin scenarios live in `backend/src/test/resources/features`; after `./mvnw verify` the Cucumber report is in `backend/target/cucumber-reports/` (HTML, plus JSON for Xray).

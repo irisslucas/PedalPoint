@@ -13,6 +13,7 @@ PedalPoint: e-bike sharing for a university campus (fictional client Ria Nova Un
 ## Commands (run from `backend/`)
 - Build, unit and integration tests: `./mvnw -B verify` (Docker must be running: integration tests use Testcontainers)
 - Unit tests only: `./mvnw -B test`
+- BDD: `verify` also runs the `.feature` files through `CucumberIT` (failsafe, Testcontainers); step definitions are in `tqs.ua.pedalpoint.backend.bdd`; report in `target/cucumber-reports/`.
 - Run the stack: `docker compose up --build` (from the repository root)
 
 ## Code style
