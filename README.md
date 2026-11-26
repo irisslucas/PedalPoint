@@ -6,9 +6,7 @@
 
 **PedalPoint** is a light-mobility fleet-as-a-service platform for a university campus.
 
-PedalPoint Mobility Ltd. runs a fleet of bikes, e-bikes and cargo bikes for Ria Nova University (both fictional). Students and staff can borrow a bike for the whole semester, through a waiting list with priority rules, or book one from the hourly pool at the campus hubs. The operator handles maintenance, battery management and moving bikes between hubs under agreed SLAs. The university sets the rules of use and follows the service through KPIs.
-
-The concept is inspired by the University of Aveiro's UAUbike programme.
+PedalPoint Mobility Ltd. runs a fleet of e-bikes and cargo e-bikes for Ria Nova University (both fictional). Students and staff with a @ua.pt account find an e-bike at a campus hub, book it for a period or unlock it on the spot, and return it to any hub with free space, where it charges. They pay with a monthly or semester pass, or per use. The operator handles maintenance, batteries and moving e-bikes between hubs under agreed SLAs. The university sets the rules of use and the prices, and follows the service through KPIs and a monthly statement.
 
 ## 2. Project team
 
