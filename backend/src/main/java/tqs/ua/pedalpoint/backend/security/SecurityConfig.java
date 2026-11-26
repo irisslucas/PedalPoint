@@ -48,7 +48,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // stateless API with bearer tokens, no cookies
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET, "/api/hubs").permitAll()
+                        // Hubs and the e-bikes available at them are public (PO decision, spec section 6)
+                        .requestMatchers(HttpMethod.GET, "/api/hubs", "/api/hubs/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/actuator/health", "/actuator/health/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
