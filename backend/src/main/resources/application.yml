@@ -17,3 +17,10 @@ management:
     web:
       exposure:
         include: health,info
+
+pedalpoint:
+  jwt:
+    # Dev-only default. Set PEDALPOINT_JWT_SECRET (at least 32 bytes) in any shared or deployed environment.
+    secret: ${PEDALPOINT_JWT_SECRET:dev-only-insecure-jwt-secret-change-me-0123456789}
+    issuer: pedalpoint
+    expiration: ${PEDALPOINT_JWT_EXPIRATION:1h}
