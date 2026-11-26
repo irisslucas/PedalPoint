@@ -6,7 +6,7 @@ A feature tagged `@wip` has its Gherkin written but no step definitions yet; the
 
 | Story | Summary | Epic | SP | Owner | Gherkin |
 |---|---|---|---|---|---|
-| US-01 | Register and log in with a @ua.pt email | 1 · Accounts and roles | 3 | Team Coordinator | `us01_register_login.feature` |
+| US-01 | Register and log in with a @ua.pt email | 1 · Accounts and roles | 3 | Team Coordinator | `register_login.feature` (PR #11) |
 | US-04 | See the available e-bikes at a hub, by type | 2 · Find and use an e-bike | 3 | Product Owner | `us04_available_ebikes.feature` |
 | US-20 | Simulator and MQTT telemetry with a replaceable adapter | 5 · Availability based on battery | 5 | DevOps Master | `us20_telemetry.feature` |
 | US-21 | Charging and minimum battery (CHARGING state) | 5 · Availability based on battery | 5 | DevOps Master | `us21_charging.feature` |
@@ -21,6 +21,7 @@ As a student, I want to create an account with my university email and log in, s
 - Two accounts cannot have the same email.
 - Login returns a JWT token.
 - Wrong credentials show an error message and give no access.
+- The Gherkin of this story is owned by the story's developer (PR #11). It must be tagged `@epic-1 @US-01` and cover the email-domain criterion, including uppercase emails and look-alike domains such as `@ua.pt.com` and `@xua.pt`.
 
 ## US-04 — See the available e-bikes at a hub, by type (3 SP)
 
