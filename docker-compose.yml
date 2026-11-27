@@ -16,17 +16,46 @@ services:
       timeout: 3s
       retries: 10
 
+  mosquitto:
+    image: eclipse-mosquitto:2.0.20
+    ports:
+      - "${MQTT_PORT:-1883}:1883"
+    volumes:
+      - ./infra/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mosquitto_sub -h localhost -t '$$SYS/#' -C 1 -W 3 > /dev/null || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   backend:
     build: ./backend
     depends_on:
       db:
         condition: service_healthy
+      mosquitto:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/pedalpoint
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-pp}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-pp}
+      PEDALPOINT_TELEMETRY_MQTT_ENABLED: "true"
+      PEDALPOINT_TELEMETRY_MQTT_BROKER_URL: tcp://mosquitto:1883
     ports:
       - "8080:8080"
+
+  simulator:
+    build: ./simulator
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    environment:
+      MQTT_BROKER_URL: tcp://mosquitto:1883
+      # real seconds per simulated minute: 60 is real time; use a small value (for example 5) to see charging quickly
+      TICK_SECONDS: ${SIMULATOR_TICK_SECONDS:-60}
+      CHARGE_PERCENT_PER_TICK: 1
 
 volumes:
   db-data:

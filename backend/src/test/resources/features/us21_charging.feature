@@ -1,4 +1,4 @@
-@epic-5 @US-21 @wip
+@epic-5 @US-21
 Feature: Charging and minimum battery
   As a student
   I want e-bikes with low battery to charge at the hubs until they can be used again
