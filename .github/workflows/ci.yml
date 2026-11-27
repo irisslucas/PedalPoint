@@ -10,16 +10,31 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # SonarCloud needs the full history to detect new code
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: 21
           cache: maven
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
       # unit tests (surefire) + integration tests (failsafe, Testcontainers; Docker is available on ubuntu-latest)
       - name: Build and test
         run: ./mvnw -B verify
+      # fails the job when the quality gate fails, so the merge is blocked
+      # skipped when the secret is not available (Dependabot and fork PRs)
+      - name: SonarCloud analysis and quality gate
+        if: env.SONAR_TOKEN != ''
+        run: ./mvnw -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.qualitygate.wait=true
       - name: Upload test and coverage reports
         if: always()
         uses: actions/upload-artifact@v7
