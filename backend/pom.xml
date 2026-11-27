@@ -17,6 +17,12 @@
 		<java.version>21</java.version>
 		<springdoc.version>3.2.1</springdoc.version>
 		<cucumber.version>8.1.0</cucumber.version>
+		<!-- SonarCloud (PDP-28) -->
+		<sonar.organization>irisslucas</sonar.organization>
+		<sonar.projectKey>irisslucas_PedalPoint</sonar.projectKey>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<!-- coverage from unit tests (jacoco) and integration tests (jacoco-it) -->
+		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml,${project.build.directory}/site/jacoco-it/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 	<dependencies>
 		<dependency>

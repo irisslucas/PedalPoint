@@ -4,10 +4,18 @@ updates:
     directory: /backend
     schedule:
       interval: weekly
+
   - package-ecosystem: docker
     directory: /backend
     schedule:
       interval: weekly
+    ignore:
+      # the project targets Java 21 (see CONTRIBUTING.md): no new Java major in the runtime image
+      - dependency-name: eclipse-temurin
+        update-types: ["version-update:semver-major"]
+      # the build image tag carries the Java version (3.9-eclipse-temurin-21); updated by hand
+      - dependency-name: maven
+        
   - package-ecosystem: github-actions
     directory: /
     schedule:
