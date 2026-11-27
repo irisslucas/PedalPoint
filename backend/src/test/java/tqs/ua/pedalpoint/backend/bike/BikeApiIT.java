@@ -19,7 +19,7 @@ import tqs.ua.pedalpoint.backend.hub.HubRepository;
 
 /**
  * Integration test: full app + real PostgreSQL (Testcontainers), so the repository query,
- * the V3 schema and the HTTP mapping are checked together. The business rules themselves are
+ * the bike table (V4 migration) and the HTTP mapping are checked together. The business rules themselves are
  * covered by the Cucumber scenarios in features/us04_available_ebikes.feature.
  */
 @Import(TestcontainersConfiguration.class)

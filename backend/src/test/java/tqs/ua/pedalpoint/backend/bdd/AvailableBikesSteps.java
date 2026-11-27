@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -29,19 +28,20 @@ public class AvailableBikesSteps {
 
     private static final long UNKNOWN_HUB_ID = 999_999L;
 
-    @Autowired
-    private MockMvc mvc;
-
-    @Autowired
-    private BikeRepository bikeRepository;
-
-    @Autowired
-    private HubRepository hubRepository;
-
-    @Autowired
-    private BikeService bikeService;
+    private final MockMvc mvc;
+    private final BikeRepository bikeRepository;
+    private final HubRepository hubRepository;
+    private final BikeService bikeService;
 
     private MvcResult result;
+
+    public AvailableBikesSteps(MockMvc mvc, BikeRepository bikeRepository, HubRepository hubRepository,
+            BikeService bikeService) {
+        this.mvc = mvc;
+        this.bikeRepository = bikeRepository;
+        this.hubRepository = hubRepository;
+        this.bikeService = bikeService;
+    }
 
     @Before
     public void cleanFleet() {
