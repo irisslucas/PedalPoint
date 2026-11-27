@@ -1,4 +1,4 @@
-@epic-5 @US-20 @wip
+@epic-5 @US-20
 Feature: Telemetry from the fleet simulator
   As an operator
   I want the e-bike state to be updated automatically from telemetry

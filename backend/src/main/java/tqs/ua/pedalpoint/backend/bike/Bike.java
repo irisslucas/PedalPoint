@@ -85,4 +85,24 @@ public class Bike {
     public Instant getLastTelemetryAt() {
         return lastTelemetryAt;
     }
+
+    /**
+     * Applies a telemetry reading: battery, time of the reading and, when the e-bike is docked, the hub.
+     * An e-bike in use has no hub, so a hub in the reading is ignored for it (a trip ends through the trip rules).
+     * Then the charging rule: docked and available below {@code minBattery} it goes to CHARGING, and it goes back
+     * to AVAILABLE when it reaches {@code minBattery}. An e-bike in use, booked, in maintenance or retired never
+     * changes state because of its battery.
+     */
+    public void recordTelemetry(int battery, Hub reportedHub, Instant at, int minBattery) {
+        this.batteryLevel = battery;
+        this.lastTelemetryAt = at;
+        if (state != BikeState.IN_USE && reportedHub != null) {
+            this.hub = reportedHub;
+        }
+        if (state == BikeState.AVAILABLE && battery < minBattery) {
+            this.state = BikeState.CHARGING;
+        } else if (state == BikeState.CHARGING && battery >= minBattery) {
+            this.state = BikeState.AVAILABLE;
+        }
+    }
 }
