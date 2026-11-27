@@ -7,7 +7,9 @@ PedalPoint: e-bike sharing for a university campus (fictional client Ria Nova Un
 
 ## Layout
 - `backend/` Spring Boot service (package `tqs.ua.pedalpoint.backend`, one sub-package per domain area, e.g. `hub`)
-- `frontend/`, `simulator/` not started yet
+- `simulator/` Java 21 fleet simulator (package `tqs.ua.pedalpoint.simulator`): publishes telemetry over MQTT and charges docked e-bikes 1% per tick; `./mvnw -B verify` from `simulator/`
+- `infra/` configuration of the containers (Mosquitto)
+- `frontend/` not started yet
 - `docs/` reports; `.github/` workflows and PR template
 
 ## Commands (run from `backend/`)
