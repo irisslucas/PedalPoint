@@ -19,6 +19,13 @@ management:
         include: health,info
 
 pedalpoint:
+  telemetry:
+    mqtt:
+      # off by default so that the app and the tests start without a broker; docker compose turns it on
+      enabled: ${PEDALPOINT_TELEMETRY_MQTT_ENABLED:false}
+      broker-url: ${PEDALPOINT_TELEMETRY_MQTT_BROKER_URL:tcp://localhost:1883}
+      topic: pedalpoint/bikes/+/telemetry
+      client-id: pedalpoint-backend
   jwt:
     # Dev-only default. Set PEDALPOINT_JWT_SECRET (at least 32 bytes) in any shared or deployed environment.
     secret: ${PEDALPOINT_JWT_SECRET:dev-only-insecure-jwt-secret-change-me-0123456789}

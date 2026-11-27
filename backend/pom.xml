@@ -23,6 +23,7 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<!-- coverage from unit tests (jacoco) and integration tests (jacoco-it) -->
 		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml,${project.build.directory}/site/jacoco-it/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<paho.version>1.2.5</paho.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -112,6 +113,12 @@
 			<groupId>org.testcontainers</groupId>
 			<artifactId>testcontainers-postgresql</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!-- MQTT client for the telemetry adapter -->
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+			<version>${paho.version}</version>
 		</dependency>
 		<!-- BDD: Gherkin acceptance criteria run with Cucumber (by failsafe, see bdd/CucumberIT) -->
 		<dependency>
