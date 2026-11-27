@@ -1,3 +1,4 @@
+@epic-1 @US-01 @wip
 Feature: Register and log in with a @ua.pt email
   Scenario: Register with a UA email
     Given no account exists for "ana@ua.pt"

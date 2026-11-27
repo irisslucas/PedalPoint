@@ -24,3 +24,6 @@ pedalpoint:
     secret: ${PEDALPOINT_JWT_SECRET:dev-only-insecure-jwt-secret-change-me-0123456789}
     issuer: pedalpoint
     expiration: ${PEDALPOINT_JWT_EXPIRATION:1h}
+  # Business rules (initial values from the specification; the university manager will be able to change them, epic 7)
+  rules:
+    min-battery-to-book: 20
