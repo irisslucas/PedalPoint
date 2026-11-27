@@ -26,14 +26,10 @@ PedalPoint: e-bike sharing for a university campus (fictional client Ria Nova Un
 ## Tests
 - Unit tests (`*Test`): business logic, no Spring context, mocks for collaborators.
 - Integration tests (`*IT`): run by failsafe in `verify`, real PostgreSQL via Testcontainers; pin image versions (no `latest`).
-<<<<<<< HEAD
-- Acceptance criteria of core stories become Gherkin scenarios (Cucumber) in `src/test/resources/features/`.
-- Every new business rule gets unit tests, including the error cases.
-=======
 - Acceptance criteria of core stories become Gherkin scenarios (Cucumber): one `.feature` per story in `backend/src/test/resources/features`, tagged `@US-<n>`. Stories of the current iteration are listed in `docs/I2_user_stories.md`.
 - A feature tagged `@wip` has no step definitions yet and is excluded from the run; remove the tag when the steps are implemented.
 - A feature covers one story only: a scenario that tests the behaviour of another story goes in that story's feature.
->>>>>>> 1db4676 (PDP-26: document I2 user stories and one-feature-per-story rule)
+- Every new business rule gets unit tests, including the error cases.
 - Tests must be able to fail on a plausible bug; do not add tests that only restate the implementation.
 - Never delete or weaken a failing test to make the build pass. Report it instead.
 
